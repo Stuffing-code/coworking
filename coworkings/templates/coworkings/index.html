@@ -1,5 +1,12 @@
 {% extends 'coworkings/base.html' %}
 
+{% block page_header%}
+{% endblock page_header %}
+
 {% block content %}
-<h1> dsadasdsadsa</h1>
+<h1>Offices:</h1>
+{% for office in office %}
+    <a href="{% url 'coworkings:place' office.id %}">{{office}}</a>
+    <br>
+{% endfor %}
 {% endblock content %}

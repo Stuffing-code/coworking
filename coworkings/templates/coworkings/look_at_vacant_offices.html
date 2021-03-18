@@ -1,0 +1,15 @@
+{% extends "coworkings/base.html" %}
+
+<h2> dasdas</h2>
+
+{% block content %}
+
+<form method="get" action='{% url 'coworkings:look_at_vacant_offices' %}'>
+    {% csrf_token %}
+    <input type='datetime' name='datetime_from'><br>
+    <input type='datetime' name='datetime_to'><br>
+    <a href="{% url 'coworkings:vacant_offices'%}">LOOOOOOOOOK</a>
+    <button type='submit'>Look</button>
+    {% csrf_token %}
+</form>
+{% endblock content %}

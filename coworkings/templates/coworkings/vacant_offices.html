@@ -1,0 +1,9 @@
+{% extends "coworkings/base.html" %}
+
+{% block content%}
+
+{% for office in filteroffice %}
+    {{office.number_office}}<br>
+{%endfor %}
+
+{% endblock content%}

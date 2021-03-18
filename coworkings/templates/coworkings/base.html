@@ -1,4 +1,20 @@
+
 <h1>Welcome</h1>
+    <a href="{% url 'coworkings:index'%}">Home</a> -
+    <a href="{% url 'coworkings:reservs' %}">Reservs</a> -
+    <a a href="{% url 'coworkings:look_at_vacant_offices' %}"> Look Vacant office corrections time</a>
+    {% if user.is_authenticated %}
+        Hello, {{user.username}}!!!
+        <a href="{% url 'users:logout' %}">log out</a>
+    {% else %}
+        <a href="{% url 'users:login' %}">Login</a> -
+        <a href="{% url 'users:register' %}">Register</a>
+    {% endif %}
+
+{% block page_header %}
+{% endblock page_header %}
+
 <hr>
+
 {% block content %}
 {% endblock content %}
