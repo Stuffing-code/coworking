@@ -14,8 +14,8 @@ class NumberOffice(models.Model):
 
 class Reservation(models.Model):
     number_office = models.ForeignKey(NumberOffice, on_delete=models.CASCADE)
-    datetime_from = models.DateTimeField(unique=True, default=0)
-    datetime_to = models.DateTimeField(unique=True, default=0)
+    datetime_from = models.DateTimeField(unique=True)
+    datetime_to = models.DateTimeField(unique=True)
 
 
     def __str__(self):
