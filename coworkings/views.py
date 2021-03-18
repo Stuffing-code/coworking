@@ -33,9 +33,6 @@ def place(request, place_id):
     return render(request, 'coworkings/place_reserv.html', context)
 
 def look_at_vacant_offices(request):
-    
-    # print(context)
-    # return render(request, 'coworkings/vacant_offices.html', context)
     if request.GET:
         office = NumberOffice.objects.all()
         reservations = Reservation.objects.all()
