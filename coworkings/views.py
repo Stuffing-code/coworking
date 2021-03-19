@@ -13,6 +13,8 @@ def index(request):
 @login_required
 def reservs(request):
     """Page new reservations office."""
+    a = request.GET
+    print(a)
     if request.method == 'POST':
         # create a form
         form = NewReservationsOfficesForm(data=request.POST)

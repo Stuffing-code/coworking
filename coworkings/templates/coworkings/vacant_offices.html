@@ -12,9 +12,11 @@
 <ul>
 {% for office in offices%}
     {% if office not in reservednumberoffice%}
-        <li>{{office}}</li>
+    <form class ='form' action="{% url 'coworkings:reservs'%}" method="get">
+        <button class='btn btn-primary' type='submit' value='office'>{{office}} reserved</button>
     {% endif %}
 {%endfor %}
+    </form>
 </ul>
 <br>
 <hr>
