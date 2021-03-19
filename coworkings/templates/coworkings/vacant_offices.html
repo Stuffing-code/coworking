@@ -9,24 +9,22 @@
 
 {% block content%}
 <h4 class='display-4'>Vacant office</h4>
-<div class="container-center">
-    <ul>
-    <form class ='form' action="{% url 'coworkings:reservs'%}" method="get">
-    {% for office in offices%}
-        {% if office not in reservednumberoffice%}
-            <button class='btn btn-primary' type='submit'>{{office}}</button>
-        {% endif %}
-    {%endfor %}
-    </form>
-    </ul>
-    <br>
-    <hr>
-    <br>
-    <h4 class='display-4'>The offices are occupied for the time being:</h4>
-    <ul>
-    {% for reseved_office in reservednumberoffice%}
-        <li>{{reseved_office.number_office}}</li>
-    {% endfor %}
-    </ul>
-</div>
+<ul>
+{% comment %} <form class ='form' action="{% url 'coworkings:reservs'%}" method="get"> {% endcomment %}
+{% for office in offices%}
+    {% if office not in reservednumberoffice%}
+        <a style='width: 115px' class="btn btn-outline-primary btn-sm" href="{% url 'coworkings:reservs'%}" role="button">{{office}}</a>
+    {% endif %}
+{%endfor %}
+{% comment %} </form> {% endcomment %}
+</ul>
+<br>
+<hr>
+<br>
+<h4 class='display-4'>The offices are occupied for the time being:</h4>
+<ul>
+{% for reseved_office in reservednumberoffice%}
+    <li>{{reseved_office.number_office}}</li>
+{% endfor %}
+</ul>
 {% endblock content%}
