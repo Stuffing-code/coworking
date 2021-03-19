@@ -43,17 +43,14 @@ def look_vacant_offices(request):
             filteroffice = reservations.all().filter(
                 datetime_from__gte=post_from, datetime_to__lte=post_to
                 )
-            # print(type(filteroffice))
             reservednumberoffice = set()
             #  set reserved office for corect time
             for i in filteroffice:
                 reservednumberoffice.add(i.number_office)
-            print(reservednumberoffice)
-            
             context = {'offices': offices, "reservednumberoffice": reservednumberoffice}
             return render(request, 'coworkings/vacant_offices.html', context)
         else:
-            text = 'Enter the core data or fill in all fields.'
+            text = 'Enter the correct data or fill in all fields.'
             context = {'text': text}
             return render(request, 'coworkings/look_vacant_offices.html', context)
     else:

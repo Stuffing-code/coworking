@@ -12,11 +12,7 @@
 <ul>
 {% for office in offices%}
     {% if office not in reservednumberoffice%}
-        {% if office%}
-            <li>{{office}}</li>
-        {% else %}
-            <p>For the time being, all offices are occupied</p>
-        {% endif %}
+        <li>{{office}}</li>
     {% endif %}
 {%endfor %}
 </ul>
