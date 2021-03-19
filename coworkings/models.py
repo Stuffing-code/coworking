@@ -23,7 +23,7 @@ class Reservation(models.Model):
 
 
     def __str__(self):
-        date_create = f'{self.number_office} Reserved: {self.datetime_from} to {self.datetime_to}'
+        date_create = f'From {self.datetime_from.isoformat()} to {self.datetime_to.isoformat()}.'
         return date_create
 
     def __iter__(self):

@@ -1,17 +1,19 @@
 {% extends 'coworkings/base.html' %}
 
+{% block title %}
+    <title>{{office_reserv_time}} reserved:</title>
+{% endblock title %}
 
 {% block page_header %}
-  <h4>Office reserved:<h4>
+  <h4 class='display-4'>{{office_reserv_time}} reserved:<h4>
 {% endblock page_header %}
 
 {% block content %}
-    <p> {{office_reserv_time}}</p>
 
 {% if reservs %}
-<ul>
+<ul class="list-group">
   {% for text in reservs %}
-    <li>{{text}}</<li>
+    <li class="list-group-item">{{text}}</li>
   {% endfor %}
 {% else %}
   <li> No reserves </li>

@@ -1,11 +1,17 @@
 {% extends "coworkings/base.html" %}
+{% load bootstrap4 %}
+
+{% block title %}
+    <title>Regestration</title>
+{% endblock title %}
 
 {% block content %}
-    <form method="post" action="{% url 'users:register' %}">
+    <form class='form' method="post" action="{% url 'users:register' %}">
         {% csrf_token %}
-        {{ form.as_p }}
-
-        <button name='submit'>Register</button>
+        {% bootstrap_form form%}
+        {% buttons %}
+            <button name='submit' class='btn btn-primary'>Registration</button>
+        {% endbuttons %}
         <input type="hidden" name="next" value="{% url 'coworkings:index' %}" />
     </form>
 {% endblock content %}

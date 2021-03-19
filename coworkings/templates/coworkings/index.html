@@ -1,12 +1,21 @@
 {% extends 'coworkings/base.html' %}
 
+{% block title %}
+    <title>Coworkings</title>
+{% endblock title %}
+
 {% block page_header%}
+<div class='jumbotron'>
+    <h2 class='display-4'>We have Offices:</h2>
+</div>
 {% endblock page_header %}
 
 {% block content %}
-<h1>Offices:</h1>
-{% for office in office %}
-    <a href="{% url 'coworkings:place' office.id %}">{{office}}</a>
-    <br>
-{% endfor %}
+
+<ul class='list-group'>
+    {% for office in office %}
+        <a href="{% url 'coworkings:place' office.id %}">
+        <li class="list-group-item">{{office}}</a></li>
+    {% endfor %}
+</ul>
 {% endblock content %}

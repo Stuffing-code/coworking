@@ -32,25 +32,29 @@ def place(request, place_id):
     context = {"office_reserv_time": office_reserv_time, 'reservs': reservs}
     return render(request, 'coworkings/place_reserv.html', context)
 
-def look_at_vacant_offices(request):
+def look_vacant_offices(request):
     """Page for look vacant offices"""
     if request.GET:
-        offices = NumberOffice.objects.all()
-        reservations = Reservation.objects.all()
-        post_from = request.GET['datetime_from']
-        post_to = request.GET['datetime_to']
-        filteroffice = reservations.all().filter(
-            datetime_from__gte=post_from, datetime_to__lte=post_to
-            )
-        # print(type(filteroffice))
-        reservednumberoffice = set()
-        #  set reserved office for corect time
-        for i in filteroffice:
-            reservednumberoffice.add(i.number_office)
-        print(reservednumberoffice)
-        
-        context = {'offices': offices, "reservednumberoffice": reservednumberoffice}
-
-        return render(request, 'coworkings/vacant_offices.html', context)
+        if request.GET['datetime_from'] and request.GET['datetime_to']:
+            offices = NumberOffice.objects.all()
+            reservations = Reservation.objects.all()
+            post_from = request.GET['datetime_from']
+            post_to = request.GET['datetime_to']
+            filteroffice = reservations.all().filter(
+                datetime_from__gte=post_from, datetime_to__lte=post_to
+                )
+            # print(type(filteroffice))
+            reservednumberoffice = set()
+            #  set reserved office for corect time
+            for i in filteroffice:
+                reservednumberoffice.add(i.number_office)
+            print(reservednumberoffice)
+            
+            context = {'offices': offices, "reservednumberoffice": reservednumberoffice}
+            return render(request, 'coworkings/vacant_offices.html', context)
+        else:
+            text = 'Enter the core data or fill in all fields.'
+            context = {'text': text}
+            return render(request, 'coworkings/look_vacant_offices.html', context)
     else:
-        return render(request, 'coworkings/look_at_vacant_offices.html')
+        return render(request, 'coworkings/look_vacant_offices.html')

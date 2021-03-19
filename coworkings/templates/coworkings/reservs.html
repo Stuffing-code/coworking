@@ -1,13 +1,22 @@
 {% extends "coworkings/base.html" %}
+{% load bootstrap4 %}
+
+{% block title %}
+    <title>Reservation</title>
+{% endblock title %}
 
 {% block page_header %}
-  <p>Input date for example: 2006-10-25 14:30:59<p>
+  <h5 class='display-4'>Take office and input date for example:<br> 2006-10-25 14:30:59</h5>
 {% endblock page_header%}
 
 {% block content %}
-  <form action="{% url 'coworkings:reservs'%}" method="post">
+  <form class ='form' action="{% url 'coworkings:reservs'%}" method="post">
     {% csrf_token %}
-    {{form.as_p}}
-    <button name='submit'>Reservs</button>
+    {% bootstrap_form form %}
+
+    {% buttons %}
+      <button name='submit' class='btn btn-primary'>Reservation</button>
+    {% endbuttons %}
+  </form>
 {% endblock content %}
 

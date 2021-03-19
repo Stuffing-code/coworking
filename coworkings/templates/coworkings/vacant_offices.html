@@ -1,7 +1,14 @@
 {% extends "coworkings/base.html" %}
 
+{% block title %}
+    <title>Vacant office</title>
+{% endblock title %}
+
+{% block page_header%}
+{% endblock page_header%}
+
 {% block content%}
-<h1>Vacant office</h1>
+<h4 class='display-4'>Vacant office</h4>
 <ul>
 {% for office in offices%}
     {% if office not in reservednumberoffice%}
@@ -13,7 +20,10 @@
     {% endif %}
 {%endfor %}
 </ul>
-<h2>The offices are occupied for the time being:</h2>
+<br>
+<hr>
+<br>
+<h4 class='display-4'>The offices are occupied for the time being:</h4>
 <ul>
 {% for reseved_office in reservednumberoffice%}
     <li>{{reseved_office.number_office}}</li>

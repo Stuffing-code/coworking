@@ -1,0 +1,31 @@
+{% extends "coworkings/base.html" %}
+
+{% block title %}
+    <title>Look vacant office</title>
+{% endblock title %}
+
+{% block page_header%}
+    <h4 class='display-4'>{{text}}</h4>
+{%  endblock page_header %}
+{% block content %}
+
+<form method="get" action='{% url 'coworkings:look_vacant_offices' %}'>
+    <div class='row g-3 align-items-center'>
+        <div class='col-auto'>
+            <label for="floatingInput" class="col-form-label">Date time for:</label>
+            <input type='datetime-local' name='datetime_from' id='floatingInput' class='form-control' aria-describedby='datetime_from_inhelp'>
+        </div>
+        <div class='col-auto'>
+            <label for="datetime_to" class="col-form-label">Date time to:</label>
+            <input type='datetime-local' name='datetime_to' id='datetime_to' class='form-control'>
+        </div>
+    </div>
+    <br>
+    <div>
+        <button type='submit' class='btn btn-primary'>Look</button>
+    </div>
+    {% csrf_token %}
+    
+</form>
+
+{% endblock content %}

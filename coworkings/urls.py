@@ -9,6 +9,6 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('reservs/', views.reservs, name='reservs'),
     path('place/<int:place_id>', views.place, name='place'),
-    path('look_at_vacant_offices/', views.look_at_vacant_offices, name='look_at_vacant_offices'),
+    path('look_vacant_offices/', views.look_vacant_offices, name='look_vacant_offices'),
     # TODO: добавить урлы на просмотр забронированых офисов
 ]
