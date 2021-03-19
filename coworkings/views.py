@@ -33,15 +33,23 @@ def place(request, place_id):
     return render(request, 'coworkings/place_reserv.html', context)
 
 def look_at_vacant_offices(request):
+    """Page for look vacant offices"""
     if request.GET:
-        office = NumberOffice.objects.all()
+        offices = NumberOffice.objects.all()
         reservations = Reservation.objects.all()
         post_from = request.GET['datetime_from']
         post_to = request.GET['datetime_to']
-        filteroffice = reservations.all().exclude(
+        filteroffice = reservations.all().filter(
             datetime_from__gte=post_from, datetime_to__lte=post_to
             )
-        context = {'filteroffice': filteroffice}
+        # print(type(filteroffice))
+        reservednumberoffice = set()
+        #  set reserved office for corect time
+        for i in filteroffice:
+            reservednumberoffice.add(i.number_office)
+        print(reservednumberoffice)
+        
+        context = {'offices': offices, "reservednumberoffice": reservednumberoffice}
 
         return render(request, 'coworkings/vacant_offices.html', context)
     else:

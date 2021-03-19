@@ -8,16 +8,23 @@ class NumberOffice(models.Model):
     def __str__(self):
         return self.number_office
 
-    def check_time(self):
-        pass
+    def __iter__(self):
+        return iter(self.number_office)
 
 
 class Reservation(models.Model):
-    number_office = models.ForeignKey(NumberOffice, on_delete=models.CASCADE)
-    datetime_from = models.DateTimeField(unique=True)
-    datetime_to = models.DateTimeField(unique=True)
+    number_office = models.ForeignKey(
+        NumberOffice,
+        on_delete=models.CASCADE,
+        unique_for_date="datetime_from",
+    )
+    datetime_from = models.DateTimeField()
+    datetime_to = models.DateTimeField()
 
 
     def __str__(self):
-        date_create = f'{self.number_office} Reserved: {self.datetime_from.isoformat()} to {self.datetime_to.isoformat()}'
+        date_create = f'{self.number_office} Reserved: {self.datetime_from} to {self.datetime_to}'
         return date_create
+
+    def __iter__(self):
+        return iter(self.number_office)
