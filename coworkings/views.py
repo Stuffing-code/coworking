@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-
+from django.contrib.auth.decorators import login_required
 from .models import NumberOffice, Reservation
 from .forms import NewReservationsOfficesForm
 # Create your views here.
@@ -10,6 +10,7 @@ def index(request):
     context = {'office': office}
     return render(request, 'coworkings/index.html', context)
 
+@login_required
 def reservs(request):
     """Page new reservations office."""
     if request.method == 'POST':
@@ -32,6 +33,7 @@ def place(request, place_id):
     context = {"office_reserv_time": office_reserv_time, 'reservs': reservs}
     return render(request, 'coworkings/place_reserv.html', context)
 
+@login_required
 def look_vacant_offices(request):
     """Page for look vacant offices"""
     if request.GET:
