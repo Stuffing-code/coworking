@@ -13,7 +13,7 @@
 {% for office in offices%}
     {% if office not in reservednumberoffice%}
     <form class ='form' action="{% url 'coworkings:reservs'%}" method="get">
-        <button class='btn btn-primary' type='submit' value='office'>{{office}} reserved</button>
+        <button class='btn btn-primary' type='submit' value='office'>{{office}}</button>
     {% endif %}
 {%endfor %}
     </form>
